@@ -20,7 +20,7 @@
     ```
 
 ## Deployment
-The application is deployed at [Hosted Link](https://schedular1-x1.vercel.app).
+The application is deployed at [Hosted Link](https://zuai-six.vercel.app).
 
 ##Backend Setup
 
