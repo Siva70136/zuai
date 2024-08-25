@@ -1,0 +1,47 @@
+.home-container {
+    display: flex;
+}
+
+.items-container {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+.delete-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item {
+    width: 400px;    
+    box-shadow: 1px 1px 3px 5px rgb(225, 224, 224);
+    border-radius: 10px;
+    margin: 8px;
+}
+.info{
+    padding: 10px;
+}
+
+.image {
+    width: 100%;
+}
+
+.title {
+    list-style: 0px;
+    text-align: center;
+}
+.ex{
+    line-height: 0px;
+}
+.times-container{
+    display: flex;
+}
+.created{
+    margin-left: 10px;
+}
+/*Blog Details*/
+.details-container{
+   text-align: center;
+}
