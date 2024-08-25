@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SideMenu from '../sidemenu';
+import { ToastContainer, toast } from 'react-toastify';
 import './index.css'
 
 function BlogForm() {
@@ -10,9 +11,19 @@ function BlogForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:3000/posts', { title, excerpt, content })
+        axios.post('https://zuai-1-c8tq.onrender.com/posts', { title, excerpt, content })
             .then(response => {
-                alert('Post created successfully!');
+                toast.success('Post created Successfully', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+
+                });
                 setTitle('');
                 setExcerpt('');
                 setContent('');
@@ -43,6 +54,7 @@ function BlogForm() {
                     <button type="submit" className='logout'>Create Post</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 }

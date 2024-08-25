@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MdDeleteOutline } from "react-icons/md";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import SideMenu from './sidemenu';
 import './index.css'
 
@@ -12,10 +13,10 @@ function BlogList() {
         getItems();
     }, []);
 
-    const getItems=()=>{
-        axios.get('http://localhost:3000/posts')
+    const getItems = () => {
+        axios.get('https://zuai-1-c8tq.onrender.com/posts')
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 setPosts(response.data);
             })
             .catch(error => {
@@ -24,9 +25,19 @@ function BlogList() {
     }
 
     const removeItem = (id) => {
-        axios.delete(`http://localhost:3000/posts/${id}`)
+        axios.delete(`https://zuai-1-c8tq.onrender.com/posts/${id}`)
             .then(response => {
-                alert("deleted Successfully");
+                toast.success('Deleted Successfully', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+
+                });
                 getItems();
             })
             .catch(error => {
@@ -47,7 +58,7 @@ function BlogList() {
                                 <img src="https://www.savemyexams.com/cdn-cgi/image/f=auto,width=828/https://cdn.savemyexams.com/images/articles/blog-placeholder-1.png" alt='img' className='image' />
                             </Link>
                             <div className='info'>
-                                <h3 className='title'>{post.title}</h3>
+                                <h3 className='title'>{post.id}.&nbsp;{post.title}</h3>
                                 <p className='ex'>{post.excerpt}</p>
                                 <div className='delete-container'>
                                     <div className='times-container'>
@@ -73,6 +84,7 @@ function BlogList() {
                     ))}
                 </ul>
             </div>
+            <ToastContainer />
         </div>
     );
 }

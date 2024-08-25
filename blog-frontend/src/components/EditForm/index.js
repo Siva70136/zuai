@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import SideMenu from '../sidemenu';
 
 import './index.css'
@@ -12,9 +13,19 @@ function EditForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put(`http://localhost:3000/posts/${id}`, { title, excerpt, content })
+        axios.put(`https://zuai-1-c8tq.onrender.com/posts/${id}`, { title, excerpt, content })
             .then(response => {
-                alert('Post Updated successfully!');
+                toast.success('Post Updated Successfully', {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+
+                });
                 setId('');
                 setTitle('');
                 setExcerpt('');
@@ -50,6 +61,7 @@ function EditForm() {
                     <button type="submit" className='logout'>Update Post</button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 }

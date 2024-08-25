@@ -1,4 +1,3 @@
-// src/components/BlogDetail.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +10,7 @@ function BlogDetail() {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/posts/${id}`)
+        axios.get(`https://zuai-1-c8tq.onrender.com/posts/${id}`)
             .then(response => {
                 setPost(response.data);
             })
